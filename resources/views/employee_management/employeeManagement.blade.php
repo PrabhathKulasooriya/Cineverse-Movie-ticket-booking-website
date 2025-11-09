@@ -83,7 +83,6 @@
                                     <th>USER ROLE</th>
                                     <th>NAME</th>
                                     <th>CONTACT NUMBER</th>
-                                    <th>GENDER</th>
                                     <th>STATUS</th>
                                     <th>OPTIONS</th>
                                 </tr>
@@ -97,7 +96,7 @@
                                                 <td>{{$user->UserRole->role_name}}</td>
                                                 <td>{{$user->first_name}} {{$user->last_name}}</td>
                                                 <td>{{$user->contact_number}}</td>
-                                                <td>{{$user->gender}}</td>
+                                                
 
                                                 <!--Status Start-->
                                                 @if($user->status == 1)
@@ -143,8 +142,6 @@
                                                                 data-fname="{{ $user->first_name }}"
                                                                 data-lname="{{ $user->last_name }}"
                                                                 data-contactno="{{ $user->contact_number }}"
-                                                                data-gender="{{ $user->gender }}"
-                                                                data-dob="{{ $user->dob }}"
                                                                 data-email="{{ $user->email }}"
 
                                                                 id="viewUserID"
@@ -166,9 +163,7 @@
                                                                 data-lname="{{ $user->last_name }}"
                                                                 data-role="{{$user->user_role_iduser_role}}"
                                                                 data-contactno="{{ $user->contact_number }}"
-                                                                data-dob="{{ $user->dob }}"
                                                                 data-email="{{ $user->email }}"
-                                                                data-gender="{{ $user->gender }}"
 
                                                                 id="updateUserID"
                                                                 data-target="#updateUserModal"><i
@@ -266,14 +261,6 @@
                                 <small class="text-danger" id="lNameError"></small>
                             </div>
 
-
-                            <div class="form-group">
-                                <label>Email<span style="color: red">*</span></label>
-                                <input type="email" class="form-control" id="email"
-                                       name="email" placeholder="example@email.com" oninput="this.value = this.value.toLowerCase();">
-                                <small class="text-danger" id="emailError"></small>
-                            </div>
-
                     </div>
 
 
@@ -282,22 +269,11 @@
 
                     <div class="col-lg-6">
 
-
-
                         <div class="form-group">
-                            <label>Gender<span style="color: red">*</span></label>
-                            <select class="form-control" name="gender" id="gender" required>
-                                <option> Male </option>
-                                <option> Female </option>
-                            </select>
-                            <small class="text-danger" id="genderError"></small>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Date of Birth <span style="color: red">*</span></label>
-                            <input type="date" class="form-control" id="dob"
-                                   name="dob" placeholder="Date of Birth" min= "1900-01-01" max="<?= date('Y-m-d') ?>" >
-                            <small class="text-danger" id="dobError"></small>
+                            <label>Email<span style="color: red">*</span></label>
+                            <input type="email" class="form-control" id="email"
+                                   name="email" placeholder="example@email.com" oninput="this.value = this.value.toLowerCase();">
+                            <small class="text-danger" id="emailError"></small>
                         </div>
 
                          <div class="form-group">
@@ -391,20 +367,6 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Gender</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="viewGender" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">DOB</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="viewDob" readonly max="<?= date('Y-m-d') ?>" >
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <div class="col-sm-12">
                             <button type="button" class="btn btn-md btn-outline-primary waves-effect float-right" data-dismiss="modal" >Close</button>
                         </div>
@@ -489,25 +451,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Gender</label>
-                    <select class="form-control" name="updateGender" id="updateGender" required>
-                                <option> Male </option>
-                                <option> Female </option>
-                            </select>
-                    <span class="text-danger" id="updateGenderError"></span>
-                </div>
-
-
-                <div class="form-group">
-                    <label>DOB</label>
-                    <input type="date" class="form-control" name="updateDob"
-                           id="updateDob" required placeholder="DOB" min= "1900-01-01" max="<?= date('Y-m-d') ?>" />
-                    <span class="text-danger" id="updateDobError"></span>
-                </div>
-
-
-
-                <div class="form-group">
                     <button type="button"  class="btn btn-primary float-right"
                             onclick="updateUser()" >
                         Update User</button>
@@ -589,8 +532,12 @@
 
          $('#datatable').DataTable({
                "order": [], // Disable initial sorting
+               "searching": true, // Enable search
+               "paging": true, // Enable pagination
+               "info": true, // Show info
+               "lengthChange": true, // Show entries dropdown
          "columnDefs": [
-             { "orderable": false, "targets": [3,5,6] } // Disable sorting for target columns
+             { "orderable": false, "targets": [4, 5] } // Disable sorting for STATUS and OPTIONS columns (index 4 and 5)
           ]
         });
     });
@@ -633,12 +580,12 @@
  //Save User Start
     function saveUser(){
 
+        console.log('Save User function called'); // Debug log
+
         $('#userTypeError').html('');
         $("#fNameError").html('');
         $("#lNameError").html('');
         $("#contactNoError").html('');
-        $("#genderError").html('');
-        $("#dobError").html('');
         $("#emailError").html('');
         $("#passwordError").html('');
 
@@ -646,11 +593,17 @@
         var userType = $("#userType").val();
         var fName = $("#fName").val();
         var lName = $("#lName").val();
-        var gender = $("#gender").val();
         var email = $("#email").val();
-        var dob = $("#dob").val();
         var contactNo = $("#contactNo").val();
         var password = $("#password").val();
+
+        // Debug: Log all values
+        console.log('User Type:', userType);
+        console.log('First Name:', fName);
+        console.log('Last Name:', lName);
+        console.log('Email:', email);
+        console.log('Contact No:', contactNo);
+        console.log('Password:', password ? '***' : 'empty');
 
         var token = $('meta[name="csrf-token"]').attr('content');
 
@@ -658,60 +611,36 @@
             userType:userType,
             fName:fName,
             lName:lName,
-            gender:gender,
-            dob:dob,
             contactNo:contactNo,
             email:email,
             password:password,
+            _token: token
 
 
 
         },function (data) {
+            console.log('Response received:', data); // Debug log
 
 
             if (data.errors != null) {
 
-                if(data.errors.userType) {
-                    var p = document.getElementById('userTypeError');
-                    p.innerHTML = data.errors.userType[0];
-                }
+                notify({
+                    type: "error",
+                    title: 'USER NOT SAVED',
+                    autoHide: true,
+                    delay: 2500,
+                    position: {
+                        x: "right",
+                        y: "top"
+                    },
+                    icon: '<img src="{{ URL::asset('assets/images/wrong.png')}}" />',
+                    message:data.errors,
+                });
+                $('input').val('');
 
-
-                if(data.errors.fName) {
-                    var p = document.getElementById('fNameError');
-                    p.innerHTML = data.errors.fName[0];
-                }
-
-                if(data.errors.lName) {
-                    var p = document.getElementById('lNameError');
-                    p.innerHTML = data.errors.lName[0];
-                }
-
-                if(data.errors.contactNo) {
-                    var p = document.getElementById('contactNoError');
-                    p.innerHTML = data.errors.contactNo[0];
-                }
-
-                if(data.errors.gender) {
-                    var p = document.getElementById('genderError');
-                    p.innerHTML = data.errors.gender[0];
-                }
-
-                if(data.errors.dob) {
-                    var p = document.getElementById('dobError');
-                    p.innerHTML = data.errors.dob[0];
-                }
-
-                if(data.errors.email) {
-                    var p = document.getElementById('emailError');
-                    p.innerHTML = data.errors.email[0];
-                }
-
-                if(data.errors.password) {
-                    var p = document.getElementById('passwordError');
-                    p.innerHTML = data.errors.password[0];
-                }
-
+                setTimeout(function () {
+                    $('#addUserModal').modal('hide');
+                }, 200);
 
             }
 
@@ -739,6 +668,10 @@
             }
 
 
+        }).fail(function(xhr, status, error) {
+            console.error('Ajax Error:', status, error);
+            console.error('Response:', xhr.responseText);
+            alert('Error saving user. Check console for details.');
         });
 
     }
@@ -756,8 +689,6 @@
         var firstName = $(this).data("fname");
         var lastName = $(this).data("lname");
         var contactNo = $(this).data("contactno");
-        var gender = $(this).data("gender");
-        var dob = $(this).data("dob");
         var email = $(this).data("email");
 
 
@@ -765,8 +696,6 @@
         $("#viewFname").val(firstName);
         $("#viewLname").val(lastName);
         $("#viewContactNo").val(contactNo);
-        $("#viewGender").val(gender);
-        $("#viewDob").val(dob);
         $("#viewEmail").val(email);
 
     });
@@ -786,9 +715,7 @@
         var lastName = $(this).data("lname");
         var userRole = $(this).data("role");
         var contactNo = $(this).data("contactno");
-        var dob = $(this).data("dob");
         var email = $(this).data("email");
-        var gender = $(this).data("gender");
 
 
 
@@ -798,8 +725,6 @@
         $("#updateEmail").val(email);
         $("#updateUserRole").val(userRole);
         $("#updateContactNo").val(contactNo);
-        $("#updateDob").val(dob);
-        $("#updateGender").val(gender);
 
          if ($("#updateUserType").val() !== userRole) {
             $("#updateUserType option").prop('selected', false);
@@ -815,9 +740,7 @@
         $('#updateFnameError').html('');
         $("#updateLnameError").html('');
         $("#updateContactNoError").html('');
-        $("#updateDobError").html('');
         $("#updateEmailError").html('');
-        $("#updateGenderError").html('');
         $("#updateUserTypeError").html('');
 
 
@@ -827,9 +750,7 @@
         var firstName=$("#updateFname").val();
         var lastName=$("#updateLname").val();
         var contactNo=$("#updateContactNo").val();
-        var dob=$("#updateDob").val();
         var email=$("#updateEmail").val();
-        var gender=$("#updateGender").val();
         var userType=$("#updateUserType").val();
 
         $.post('updateEmployee',{
@@ -839,9 +760,7 @@
             firstName:firstName,
             lastName:lastName,
             contactNo:contactNo,
-            dob:dob,
             email:email,
-            gender:gender,
             userType:userType
 
         },function (data) {
@@ -849,43 +768,22 @@
 
             if (data.errors != null) {
 
-                if(data.errors.firstName){
-                    var p = document.getElementById('updateFnameError');
-                    p.innerHTML = data.errors.firstName[0];
-                }
-
-                if(data.errors.lastName){
-                    var p = document.getElementById('updateLnameError');
-                    p.innerHTML = data.errors.lastName[0];
-                }
-
-
-                if(data.errors.contactNo){
-                    var p = document.getElementById('updateContactNoError');
-                    p.innerHTML = data.errors.contactNo[0];
-                }
-
-
-                if(data.errors.dob){
-                    var p = document.getElementById('updateDobError');
-                    p.innerHTML = data.errors.dob[0];
-                }
-
-
-                if(data.errors.email){
-                    var p = document.getElementById('updateEmailError');
-                    p.innerHTML = data.errors.email[0];
-                }
-
-                if(data.errors.gender){
-                    var p = document.getElementById('updateGenderError');
-                    p.innerHTML = data.errors.gender[0];
-                }
-
-                if(data.errors.userType){
-                    var p = document.getElementById('updateUserTypeError');
-                    p.innerHTML = data.errors.userRole[0];
-                }
+                notify({
+                    type: "error", //alert | success | error | warning | info
+                    title: 'USER NOT UPDATED',
+                    autoHide: true, 
+                    delay: 2500, 
+                    position: {
+                        x: "right",
+                        y: "top"
+                    },
+                    icon: '<img src="{{ URL::asset('assets/images/wrong.png')}}" />',
+                    message: data.errors,
+                });
+                $('input').val('');
+                setTimeout(function () {
+                    $('#updateUserModal').modal('hide');
+                }, 200);
 
             }
 
@@ -935,8 +833,6 @@
         $("#fNameError").html('');
         $("#lNameError").html('');
         $("#contactNoError").html('');
-        $("#genderError").html('');
-        $("#dobError").html('');
         $("#emailError").html('');
         $("#passwordError").html('');
 
@@ -946,7 +842,6 @@
         $('#updateFnameError').html('');
         $("#updateLnameError").html('');
         $("#updateContactNoError").html('');
-        $("#updateDobError").html('');
 
 
         $('input').val(''); //Clear input values of input fields

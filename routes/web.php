@@ -84,7 +84,7 @@ Route::group(['middleware' => 'auth', 'prefix' => ''], function () {
 
     Route::post('/payPending','ClientDataController@payment')->name('payPending');  
 
-    //Routes accessible to Admin, Management Employees, and Counter Employees***************************************************************************
+    //Routes accessible to Admin, Management Employees, and Ticket Counter Employees*******************************************************************
     Route::group(['middleware' => 'role:1,2,3'], function () {
 
         //Dashboard

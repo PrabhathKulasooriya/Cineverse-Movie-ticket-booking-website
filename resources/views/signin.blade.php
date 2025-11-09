@@ -43,6 +43,7 @@
 
     <div class="card" style="background-color: rgba(245, 245, 245, 0.8);">
         <div class="card-body">
+            
 
             <h3 class="text-center m-0">
                 <a  href="{{route('home')}}" ><img src="assets/images/logo/logo_3.png" height="90" alt="logo"></a>

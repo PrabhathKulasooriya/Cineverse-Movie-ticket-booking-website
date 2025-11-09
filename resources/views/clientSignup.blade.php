@@ -143,8 +143,6 @@
             $("#fNameError").html('');
             $("#lNameError").html('');
             $("#contactNoError").html('');
-            $("#genderError").html('');
-            $("#dateError").html('');
             $("#emailError").html('');
             $("#passwordError").html('');
 
@@ -174,15 +172,6 @@
                             p.innerHTML = data.errors.contactNo[0];
                         }
 
-                        if(data.errors.gender) {
-                            var p = document.getElementById('genderError');
-                            p.innerHTML = data.errors.gender[0];
-                        }
-
-                        if(data.errors.date) {
-                            var p = document.getElementById('dateError');
-                            p.innerHTML = data.errors.date[0];
-                        }
 
                         if(data.errors.email) {
                             var p = document.getElementById('emailError');

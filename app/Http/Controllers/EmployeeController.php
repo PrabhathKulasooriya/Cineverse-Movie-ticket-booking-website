@@ -28,8 +28,6 @@ class EmployeeController extends Controller
             'fName' => 'required|max:115',
             'lName' => 'required|max:115',
             'contactNo' => 'required|max:10|min:10|regex:/^07\d{8}$/',
-            'gender' => 'required',
-            'dob' => 'required',
             'email' => 'required',
             'password' => 'required|min:6',
 
@@ -48,9 +46,6 @@ class EmployeeController extends Controller
             'contactNo.min' => 'Contact No must be include 10 numbers.',
             'contactNo.regex' => 'Enter a valid phone number.',
 
-            'gender.required' => 'Gender should be provided!',
-
-            'dob.required' => 'DOB should be provided!',
 
             'email.required' => 'Email should be provided!',
 
@@ -72,8 +67,6 @@ class EmployeeController extends Controller
         $saveUser->first_name = strtoupper($request['fName']);
         $saveUser->last_name = strtoupper($request['lName']);
         $saveUser->contact_number = $request['contactNo'];
-        $saveUser->gender = $request['gender'];
-        $saveUser->dob = $request['dob'];
         $saveUser->email=strtolower($request['email']);
         $saveUser->password = $advanceEncryption->encrypt();
         $saveUser->status = 1;
@@ -100,9 +93,7 @@ class EmployeeController extends Controller
         $firstName = $request['firstName'];
         $lastName = $request['lastName'];
         $contactNo = $request['contactNo'];
-        $dob = $request['dob'];
         $email = $request['email'];
-        $gender = $request['gender'];
         $userRole = $request['userRole'];
 
 
@@ -112,9 +103,9 @@ class EmployeeController extends Controller
             'firstName' => 'required|max:115',
             'lastName' => 'required|max:115',
             'contactNo' => 'required|max:10|min:10|regex:/^07\d{8}$/',
-            'dob' => 'required',
+          
             'email' => 'required',
-            'gender' => 'required',
+           
             'userType' => 'required',
 
         ], [
@@ -129,11 +120,11 @@ class EmployeeController extends Controller
             'contactNo.min' => 'Contact No must be include 10 numbers.',
             'contactNo.regex' => 'Enter a valid phone number.',
 
-            'dob.required' => 'DOB should be provided!',
+           
 
             'email.required' => 'Email should be provided!',
 
-            'gender.required' => 'Gender should be provided!',
+          
 
             'userType.required' => 'User Role should be provided!',
 
@@ -144,15 +135,20 @@ class EmployeeController extends Controller
         }
 
 
-
         $update = User::find($hiddenUserId);
+
+
+        $existingEmail = User::where('email', $email)->first();
+        if ($existingEmail) {
+            return response()->json(['errors' => 'Email already exists!']);
+        }
 
         $update->first_name=strtoupper($firstName);
         $update->last_name=strtoupper($lastName);
         $update->contact_number=$contactNo;
-        $update->dob=$dob;
+        
         $update->email=strtolower($email);
-        $update->gender=$gender;
+        
         $update->user_role_iduser_role = $request['userType'];
 
         $update->save();

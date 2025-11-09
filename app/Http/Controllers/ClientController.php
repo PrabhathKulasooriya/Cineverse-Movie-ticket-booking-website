@@ -196,10 +196,14 @@ class ClientController extends Controller
             return response()->json(['errors' => ['general' => ['User not found!']]]);
         }
 
+        $existingEmail = User::where('email', $email)->first();
+        if ($existingEmail) {
+            return response()->json(['errors' => 'Email already exists!']);
+        }
+
         $updateUser->first_name=strtoupper($firstName);
         $updateUser->last_name=strtoupper($lastName);
-        $updateUser->contact_number=$contactNo;
-        
+        $updateUser->contact_number=$contactNo;  
         $updateUser->email=strtolower($email);
         
         $updateUser->save();

@@ -60,24 +60,28 @@
                     <br/>
 
                     <!--Data Table Start-->
+
                     <div class="table-rep-plugin">
                         <div class="table-responsive b-0" data-pattern="priority-columns">
-                            <table id="datatable" class="table table-striped table-bordered"
-                                   cellspacing="0" width="100%">
+
+
+                            <table id="datatable"   class="table table-striped table-bordered"
+                                   cellspacing="0"
+                                   width="100%">
+
                                 <thead>
                                 <tr>
                                     <th>USER ID</th>
                                     <th>NAME</th>
                                     <th>EMAIL</th>
-                                    <th>CONTACT NUMBER</th>
+                                    <th>CONTACT NO.</th>
                                     <th>STATUS</th>
                                     <th>OPTIONS</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                @if(isset($userClients))
-                                    @if(count($userClients)>0)
+                                    @if(isset($userClients) && count($userClients) > 0)
                                         @foreach($userClients as $userClient)
                                             <tr>
                                                 <td>REG-{{$userClient->idmaster_user}}</td>
@@ -90,24 +94,24 @@
                                                     <td>
                                                         <p>
                                                             <input type="checkbox"
-                                                                   onchange="adMethod('{{ $userClient->idmaster_user}}','master_user')"
-                                                                   id="{{"c".$userClient->idmaster_user}}" checked
-                                                                   switch="none"/>
+                                                                onchange="adMethod('{{ $userClient->idmaster_user}}','master_user')"
+                                                                id="{{"c".$userClient->idmaster_user}}" checked
+                                                                switch="none"/>
                                                             <label for="{{"c".$userClient->idmaster_user}}"
-                                                                   data-on-label="On"
-                                                                   data-off-label="Off"></label>
+                                                                data-on-label="On"
+                                                                data-off-label="Off"></label>
                                                         </p>
                                                     </td>
                                                 @else
                                                     <td>
                                                         <p>
                                                             <input type="checkbox"
-                                                                   onchange="adMethod('{{ $userClient->idmaster_user}}','master_user')"
-                                                                   id="{{"c".$userClient->idmaster_user}}"
-                                                                   switch="none"/>
+                                                                onchange="adMethod('{{ $userClient->idmaster_user}}','master_user')"
+                                                                id="{{"c".$userClient->idmaster_user}}"
+                                                                switch="none"/>
                                                             <label for="{{"c".$userClient->idmaster_user}}"
-                                                                   data-on-label="On"
-                                                                   data-off-label="Off"></label>
+                                                                data-on-label="On"
+                                                                data-off-label="Off"></label>
                                                         </p>
                                                     </td>
                                                 @endif
@@ -146,11 +150,14 @@
                                             </tr>
                                         @endforeach
                                     @endif
-                                @endif
-                                </tbody>
+                                    </tbody>
+
                             </table>
+
                         </div>
                     </div>
+
+
                     <!--Data Table End-->
 
                 </div>
@@ -378,9 +385,13 @@
 
         $('#datatable').DataTable({
             "order": [], // Disable initial sorting
+            "searching": true, // Enable search
+            "paging": true, // Enable pagination
+            "info": true, // Show info
+            "lengthChange": true, // Show entries dropdown
             "columnDefs": [
-                { "orderable": false, "targets": [2, 4, 5, 6] },
-                {"type":"id-num","targets":0}
+                { "orderable": false, "targets": [4, 5] }, // Disable sorting for STATUS and OPTIONS columns
+                {"type":"id-num","targets":0} // Custom sorting for USER ID column
             ]
         });
     });
@@ -397,27 +408,29 @@
 
 
     document.getElementById('contactNo').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/[^0-9]/g, ''); 
+        let value = e.target.value.replace(/[^0-9]/g, ''); 
 
-            if (value.length > 10) {
-                value = value.substring(0, 10);
-            }
+        if (value.length > 10) {
+            value = value.substring(0, 10);
+        }
 
-            e.target.value = value;
-        });
+        e.target.value = value;
+    });
 
     document.getElementById('updateContactNo').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/[^0-9]/g, ''); 
+        let value = e.target.value.replace(/[^0-9]/g, ''); 
 
-            if (value.length > 10) {
-                value = value.substring(0, 10);
-            }
+        if (value.length > 10) {
+            value = value.substring(0, 10);
+        }
 
-            e.target.value = value;
-        }); 
+        e.target.value = value;
+    }); 
 
     //Save Client Start
     function saveClient(){
+        console.log('Save Client function called'); // Debug log
+        
         // Clear previous errors
         $("#fNameError").html('');
         $("#lNameError").html('');
@@ -431,6 +444,13 @@
         var email = $("#email").val();
         var password = $("#password").val();
 
+        // Debug: Log all values
+        console.log('First Name:', fName);
+        console.log('Last Name:', lName);
+        console.log('Contact No:', contactNo);
+        console.log('Email:', email);
+        console.log('Password:', password ? '***' : 'empty');
+
         $.post('saveClientByAdmin',{
             fName: fName,
             lName: lName,
@@ -438,22 +458,29 @@
             email: email,
             password: password
         }, function (data) {
+            console.log('Response received:', data); // Debug log
+            
             if (data.errors != null) {
-                if(data.errors.fName) {
-                    document.getElementById('fNameError').innerHTML = data.errors.fName[0];
-                }
-                if(data.errors.lName) {
-                    document.getElementById('lNameError').innerHTML = data.errors.lName[0];
-                }
-                if(data.errors.contactNo) {
-                    document.getElementById('contactNoError').innerHTML = data.errors.contactNo[0];
-                }
-                if(data.errors.email) {
-                    document.getElementById('emailError').innerHTML = data.errors.email[0];
-                }
-                if(data.errors.password) {
-                    document.getElementById('passwordError').innerHTML = data.errors.password[0];
-                }
+                notify({
+                    type: "error",
+                    title: 'CLIENT NOT SAVED',
+                    autoHide: true,
+                    delay: 2500,
+                    position: {
+                        x: "right",
+                        y: "top"
+                    },
+                    icon: '<img src="{{ URL::asset('assets/images/wrong.png')}}" />',
+                    message: data.errors,
+                });
+                
+                // Clear form
+                $('#addClientModal input').val('');
+                $('#addClientModal select').val('');
+                
+                setTimeout(function () {
+                    $('#addClientModal').modal('hide');
+                }, 200);
             }
 
             if (data.success != null) {
@@ -480,6 +507,11 @@
                 
                 location.reload();
             }
+        })
+        .fail(function(xhr, status, error) {
+            console.error('Ajax Error:', status, error);
+            console.error('Response:', xhr.responseText);
+            alert('Error saving client. Check console for details.');
         });
     }
 
@@ -512,6 +544,8 @@
     });
 
     function updateClient() {
+        
+        
         // Clear previous errors
         $('#updateFnameError').html('');
         $("#updateLnameError").html('');
@@ -537,22 +571,30 @@
             email: email,
             contactNo: contactNo,
         }, function (data) {
+            
+            
             if (data.errors != null) {
-                if(data.errors.firstName) {
-                    document.getElementById('updateFnameError').innerHTML = data.errors.firstName[0];
-                }
-                if(data.errors.lastName) {
-                    document.getElementById('updateLnameError').innerHTML = data.errors.lastName[0];
-                }
-                if(data.errors.email) {
-                    document.getElementById('updateEmailError').innerHTML = data.errors.email[0];
-                }
-                if(data.errors.contactNo) {
-                    document.getElementById('updateContactNoError').innerHTML = data.errors.contactNo[0];
-                }
-                if(data.errors.general) {
-                    alert(data.errors.general[0]);
-                }
+                
+                notify({
+                    type: "error",
+                    title: 'CLIENT NOT UPDATED',
+                    autoHide: true,
+                    delay: 2500,
+                    position: {
+                        x: "right",
+                        y: "top"
+                    },
+                    icon: '<img src="{{ URL::asset('assets/images/wrong.png')}}" />',
+                    message: data.errors,
+                });
+
+                $('#updateClientModal input').val('');
+                $('#updateClientModal select').val('');
+                
+                setTimeout(function () {
+                    $('#updateClientModal').modal('hide');
+                }, 200);
+
             }
 
             if(data.success != null) {
@@ -583,7 +625,8 @@
             }
         })
         .fail(function(xhr, status, error) {
-            console.log('Error:', error);
+            console.error('Ajax Error:', status, error);
+            console.error('Response:', xhr.responseText);
             alert('An error occurred while updating the client. Please try again.');
         });
     }
