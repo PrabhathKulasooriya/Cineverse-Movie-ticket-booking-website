@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2025 at 08:35 PM
+-- Generation Time: Nov 09, 2025 at 08:12 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.3.19
 
@@ -435,14 +435,37 @@ INSERT INTO `booked_seats` (`booked_seats_id`, `bookings_booking_id`, `seats_sea
 (614, 760306717, 30, '2025-07-12 13:39:21', '2025-07-12 13:39:21'),
 (615, 760306717, 23, '2025-07-12 13:39:21', '2025-07-12 13:39:21'),
 (616, 760306717, 25, '2025-07-12 13:39:21', '2025-07-12 13:39:21'),
-(623, 740769356, 76, '2025-07-12 15:05:28', '2025-07-12 15:05:28'),
-(624, 740769356, 75, '2025-07-12 15:05:28', '2025-07-12 15:05:28'),
-(625, 740769356, 74, '2025-07-12 15:05:28', '2025-07-12 15:05:28'),
-(626, 740769356, 73, '2025-07-12 15:05:28', '2025-07-12 15:05:28'),
 (627, 760498933, 49, '2025-07-12 15:07:40', '2025-07-12 15:07:40'),
 (628, 760498933, 50, '2025-07-12 15:07:40', '2025-07-12 15:07:40'),
 (629, 760498933, 51, '2025-07-12 15:07:40', '2025-07-12 15:07:40'),
-(630, 760498933, 52, '2025-07-12 15:07:40', '2025-07-12 15:07:40');
+(630, 760498933, 52, '2025-07-12 15:07:40', '2025-07-12 15:07:40'),
+(632, 770131724, 13, '2025-07-13 03:05:35', '2025-07-13 03:05:35'),
+(633, 770131724, 14, '2025-07-13 03:05:35', '2025-07-13 03:05:35'),
+(634, 770131724, 15, '2025-07-13 03:05:35', '2025-07-13 03:05:35'),
+(635, 770131724, 16, '2025-07-13 03:05:35', '2025-07-13 03:05:35'),
+(649, 710243612, 24, '2025-07-13 06:51:49', '2025-07-13 06:51:49'),
+(650, 710243612, 25, '2025-07-13 06:51:49', '2025-07-13 06:51:49'),
+(651, 710243612, 36, '2025-07-13 06:51:49', '2025-07-13 06:51:49'),
+(652, 710243612, 35, '2025-07-13 06:51:49', '2025-07-13 06:51:49'),
+(653, 710243612, 34, '2025-07-13 06:51:49', '2025-07-13 06:51:49'),
+(654, 710243612, 33, '2025-07-13 06:51:49', '2025-07-13 06:51:49'),
+(655, 710243612, 22, '2025-07-13 06:51:49', '2025-07-13 06:51:49'),
+(656, 900227075, 22, '2025-07-13 06:59:54', '2025-07-13 06:59:54'),
+(657, 900227075, 23, '2025-07-13 06:59:54', '2025-07-13 06:59:54'),
+(658, 900227075, 24, '2025-07-13 06:59:54', '2025-07-13 06:59:54'),
+(659, 900227075, 25, '2025-07-13 06:59:54', '2025-07-13 06:59:54'),
+(673, 690242341, 24, '2025-08-07 05:21:33', '2025-08-07 05:21:33'),
+(674, 690242341, 25, '2025-08-07 05:21:33', '2025-08-07 05:21:33'),
+(679, 690748838, 74, '2025-09-20 14:56:57', '2025-09-20 14:56:57'),
+(680, 690748838, 75, '2025-09-20 14:56:57', '2025-09-20 14:56:57'),
+(681, 690748838, 73, '2025-09-20 14:56:57', '2025-09-20 14:56:57'),
+(682, 690748838, 76, '2025-09-20 14:56:57', '2025-09-20 14:56:57'),
+(683, 1020586846, 58, '2025-09-20 15:15:45', '2025-09-20 15:15:45'),
+(684, 1020586846, 59, '2025-09-20 15:15:45', '2025-09-20 15:15:45'),
+(685, 1020586846, 60, '2025-09-20 15:15:45', '2025-09-20 15:15:45'),
+(686, 1020586846, 57, '2025-09-20 15:15:45', '2025-09-20 15:15:45'),
+(687, 1030479463, 47, '2025-09-20 15:17:20', '2025-09-20 15:17:20'),
+(688, 1030479463, 48, '2025-09-20 15:17:20', '2025-09-20 15:17:20');
 
 -- --------------------------------------------------------
 
@@ -532,20 +555,23 @@ INSERT INTO `bookings` (`booking_id`, `shows_show_id`, `movies_movie_id`, `maste
 (660358860, 66, 24, 93, 7800, 'NIMESH CHATHURANA', 'nimeshchathuranga@gmail.com', 'PAID', '2025-07-09 20:05:53', '2025-07-09 20:06:29'),
 (660756704, 66, 24, 1, 3500, 'GITHMIN JAYAWARDHANA', 'admin@gmail.com', 'PAID', '2025-07-09 18:52:30', '2025-07-09 19:12:54'),
 (680334524, 68, 24, NULL, 15600, 'ISURU PRABHATH KULASOORIYA', 'prabhath.kulasooriya@gmail.com', 'PAID', '2025-07-11 06:36:53', '2025-07-11 06:38:11'),
+(690242341, 69, 23, NULL, 1000, 'TEST', 'test@gmail.com', 'PAID', '2025-08-07 05:21:33', '2025-08-07 05:22:03'),
+(690748838, 69, 23, NULL, 4000, 'ISURU PRABHATH', 'isuru@gmail.com', 'PAID', '2025-09-20 14:56:57', '2025-09-20 14:59:36'),
 (690811210, 69, 23, NULL, 7000, 'INDIKA SAMPATH', 'indikasampath@gmail.com', 'PAID', '2025-07-09 19:45:28', '2025-07-09 19:46:10'),
+(710243612, 71, 24, NULL, 3500, 'ISURU PRABATH', 'isuruprabhath@gmail.com', 'PAID', '2025-07-13 06:51:49', '2025-07-13 06:55:25'),
 (730545075, 73, 18, 85, 3900, 'ISHARA SAHENSHI', 'sahenshi@gmail.com', 'PAID', '2025-07-07 17:40:50', '2025-07-07 17:41:00'),
 (730695035, 73, 18, 85, 7000, 'ISHARA SAHENSHI', 'sahenshi@gmail.com', 'PAID', '2025-07-09 14:57:45', '2025-07-09 14:57:57'),
 (740339593, 74, 14, NULL, 5200, 'DILMI SATHKUMARA', 'dilmisathkumara@gmail.com', 'PAID', '2025-07-11 10:58:56', '2025-07-11 10:59:21'),
 (740386978, 74, 14, 97, 7800, 'UMESHA KULASOORIYA', 'umeshakulasooriya@gmail.com', 'PAID', '2025-07-05 06:21:29', '2025-07-05 06:21:41'),
 (740593291, 74, 14, NULL, 2600, 'UDITH MAHEESHA', 'udithmaheesha@gmail.com', 'PAID', '2025-07-10 18:49:58', '2025-07-10 18:50:18'),
 (740673939, 74, 14, NULL, 3500, 'AKILA', 'akila@gmail.com', 'PAID', '2025-07-09 14:55:16', '2025-07-09 14:55:52'),
-(740769356, 74, 14, 1, 7000, NULL, NULL, 'PENDING', '2025-07-12 15:05:28', '2025-07-12 15:05:28'),
 (740836470, 74, 14, NULL, 3500, 'UDAN RAJAPAKSHA', 'udanrajapaksha@gmail.com', 'PAID', '2025-07-10 18:59:49', '2025-07-10 19:00:12'),
 (750656570, 75, 11, 98, 21000, 'THATHSARA BANDARA', 'thathsara@gmail.com', 'PAID', '2025-07-07 13:01:21', '2025-07-07 13:04:21'),
 (760306717, 76, 12, 99, 3900, 'DILNETH KULASOORIYA', 'dilnethkulasooriya11@gmail.com', 'PAID', '2025-07-12 13:39:21', '2025-07-12 13:39:42'),
 (760332444, 76, 12, 93, 10400, 'DILNETH KULASOORIYA', 'dilnethkulasooriya@gmail.com', 'PAID', '2025-07-12 05:52:04', '2025-07-12 05:58:42'),
 (760498933, 76, 12, 84, 4000, 'ISURU PRABHATH KULASOORIYA', 'prabhath.kulasooriya@gmail.com', 'PAID', '2025-07-12 15:07:40', '2025-07-12 15:08:15'),
 (760595832, 76, 12, 1, 3900, 'DILNETH KULASOORIYA', 'dilnethkulasooriya@gmail.com', 'PAID', '2025-07-12 05:33:02', '2025-07-12 05:51:04'),
+(770131724, 77, 18, 84, 4000, 'ISURU PRABHATH KULASOORIYA', 'prabhath.kulasooriya@gmail.com', 'PAID', '2025-07-13 03:05:35', '2025-07-13 03:06:02'),
 (770348270, 77, 18, NULL, 10400, 'DAMITH DILSHAN', 'damithdilshan@gmail.com', 'PAID', '2025-07-10 19:03:45', '2025-07-10 19:04:11'),
 (770424687, 77, 18, NULL, 3900, 'NISAL GIMHANA', 'nisalgimhana@gmail.com', 'PAID', '2025-07-10 20:10:00', '2025-07-10 20:10:20'),
 (770582840, 77, 18, NULL, 5200, 'AVISHKA BANDARA', 'avishkabandarea@gmail.com', 'PAID', '2025-07-10 18:52:43', '2025-07-10 18:53:20'),
@@ -555,42 +581,10 @@ INSERT INTO `bookings` (`booking_id`, `shows_show_id`, `movies_movie_id`, `maste
 (780734200, 78, 23, 98, 21000, 'THATHSARA BANDARA', 'thathsara@gmail.com', 'PAID', '2025-07-06 13:16:44', '2025-07-06 13:17:04'),
 (830077192, 83, 24, NULL, 2600, 'KULASOORIYA', 'kulasooriya@gmail.com', 'PAID', '2025-07-08 08:06:11', '2025-07-08 08:07:39'),
 (860339934, 86, 18, 84, 5200, 'ISURU PRABHATH', 'prabhath.kulasooriya@gmail.com', 'PAID', '2025-07-07 12:59:16', '2025-07-07 13:00:03'),
-(870221034, 87, 23, 85, 5200, 'ISHARA SAHENSHI', 'sahenshi@gmail.com', 'PAID', '2025-07-07 17:40:18', '2025-07-07 17:40:27');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `client`
---
-
-CREATE TABLE `client` (
-  `idclient` int(11) NOT NULL,
-  `first_name` varchar(100) DEFAULT NULL,
-  `last_name` varchar(100) DEFAULT NULL,
-  `contact_number` varchar(10) DEFAULT NULL,
-  `gender` varchar(45) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `master_user_idmaster_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `client`
---
-
-INSERT INTO `client` (`idclient`, `first_name`, `last_name`, `contact_number`, `gender`, `dob`, `updated_at`, `created_at`, `master_user_idmaster_user`) VALUES
-(59, 'ISURU', 'PRABHATH KULASOORIYA', '0766961896', 'Male', '2000-04-07', '2025-07-11 07:52:54', '2025-03-27 08:53:51', 84),
-(60, 'ISHARA', 'SAHENSHI', '0772797918', 'Male', '2000-04-14', '2025-07-11 07:41:30', '2025-03-27 09:02:07', 85),
-(61, 'DILNETH', 'KULASOORIYA', '0765817918', 'Male', '2025-03-27', '2025-03-27 09:02:48', '2025-03-27 09:02:48', 86),
-(63, 'PRABHATHA', 'KULASOORIYAA', '0766961999', 'Male', '2000-12-14', '2025-07-11 07:53:55', '2025-03-29 06:06:53', 88),
-(65, 'ISURU P', 'KULASOORIYA', '0766961896', 'Male', '2000-04-07', '2025-06-22 15:57:01', '2025-06-22 15:52:29', 92),
-(66, 'VIDULA', 'AKASH', '0771234567', 'Male', '2006-07-06', '2025-07-05 05:38:39', '2025-07-05 05:38:39', 94),
-(67, 'SANDALI', 'AKARSHA', '0771234567', 'Female', '2004-07-01', '2025-07-05 05:39:59', '2025-07-05 05:39:59', 95),
-(69, 'UMESHA', 'KULASOORIYA', '0766666666', 'Female', '1988-03-09', '2025-07-05 06:19:31', '2025-07-05 06:19:31', 97),
-(70, 'THATHSARA', 'BANDARA', '0774561239', 'Male', '2000-05-01', '2025-07-06 13:14:59', '2025-07-06 13:14:59', 98),
-(71, 'DILNETH', 'KULASOORIYA', '0760404849', 'Male', '2005-01-11', '2025-07-12 13:35:00', '2025-07-12 13:33:57', 99),
-(72, 'KANTHI', 'RATHNAYAKE', '0765817918', 'Female', '1989-10-24', '2025-07-12 16:54:17', '2025-07-12 16:54:17', 102);
+(870221034, 87, 23, 85, 5200, 'ISHARA SAHENSHI', 'sahenshi@gmail.com', 'PAID', '2025-07-07 17:40:18', '2025-07-07 17:40:27'),
+(900227075, 90, 14, 107, 2000, 'GITHMIN JAYAWARDHANA', 'githmin@gmail.com', 'PAID', '2025-07-13 06:59:54', '2025-07-13 07:00:09'),
+(1020586846, 102, 11, 1, 2000, NULL, NULL, 'PENDING', '2025-09-20 15:15:45', '2025-09-20 15:15:45'),
+(1030479463, 103, 12, 1, 1000, NULL, NULL, 'PENDING', '2025-09-20 15:17:20', '2025-09-20 15:17:20');
 
 -- --------------------------------------------------------
 
@@ -629,10 +623,8 @@ CREATE TABLE `master_user` (
   `first_name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
   `contact_number` varchar(10) DEFAULT NULL,
-  `gender` varchar(45) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL,
-  `password` varchar(200) DEFAULT NULL,
+  `email` varchar(150) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -643,22 +635,23 @@ CREATE TABLE `master_user` (
 -- Dumping data for table `master_user`
 --
 
-INSERT INTO `master_user` (`idmaster_user`, `first_name`, `last_name`, `contact_number`, `gender`, `dob`, `email`, `password`, `status`, `created_at`, `updated_at`, `user_role_iduser_role`) VALUES
-(1, 'ADMIN', 'ACCOUNT', '0702691199', 'Female', '1995-01-19', 'admin@cineverse.lk', '4HsKWcPU3hdJxCxrvFHRGQ==', 1, '2022-02-09 07:35:03', '2025-07-12 18:32:23', 1),
-(84, 'ISURU', 'PRABHATH KULASOORIYA', '0766961896', 'Male', '2000-04-07', 'prabhath.kulasooriya@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-03-27 08:53:51', '2025-07-11 07:52:54', 4),
-(85, 'ISHARA', 'SAHENSHI', '0772797918', 'Male', '2000-04-14', 'sahenshi@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-03-27 09:02:07', '2025-07-11 07:41:30', 4),
-(86, 'DILNETH', 'KULASOORIYA', '0765817918', 'Male', '2025-03-27', 'dilneth@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-03-27 09:02:48', '2025-03-27 09:02:48', 4),
-(88, 'PRABHATHA', 'KULASOORIYAA', '0766961999', 'Male', '2000-12-14', 'prabhath@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-03-29 06:06:53', '2025-07-11 07:53:55', 4),
-(90, 'PASINDU', 'BHANUKA', '0766666778', 'Male', '2000-07-29', 'pasindubhanuka@cineverse.lk', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-05-04 03:52:15', '2025-07-12 16:22:30', 2),
-(92, 'ISURU', 'KULASOORIYA', '0766961896', 'Male', '2000-04-07', 'isuruprabhathkulasooriya@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-06-22 15:52:29', '2025-06-22 16:00:22', 4),
-(93, 'TESHANI', 'RAVEENA', '0761234568', 'Female', '2000-02-10', 'teshani@cineverse.lk', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-03 15:29:27', '2025-07-11 07:30:58', 3),
-(94, 'VIDULA', 'AKASH', '0771234567', 'Male', '2006-07-06', 'vidulaakash@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-05 05:38:39', '2025-07-05 05:38:39', 4),
-(95, 'SANDALI', 'AKARSHA', '0771234567', 'Female', '2004-07-01', 'sandaliakarsha@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-05 05:39:59', '2025-07-05 05:39:59', 4),
-(97, 'UMESHA', 'KULASOORIYA', '0766666666', 'Female', '1988-03-09', 'umeshakulasooriya@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-05 06:19:31', '2025-07-05 06:19:31', 4),
-(98, 'THATHSARA', 'BANDARA', '0774561239', 'Male', '2000-05-01', 'thathsara@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-06 13:14:59', '2025-07-06 13:14:59', 4),
-(99, 'DILNETH', 'KULASOORIYA', '0760404849', 'Male', '2005-01-11', 'dilneth.kulasooriya11@gmail.com', 'I4tNvtlHlkXXO75ilVx6kg==', 1, '2025-07-12 13:33:57', '2025-07-12 13:52:26', 4),
-(101, 'GAYASHAN', 'NIMESHA', '0772772772', 'Male', '1998-07-14', 'gayashan.admin@cineverse.lk', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-12 16:01:14', '2025-07-12 16:01:14', 1),
-(102, 'KANTHI', 'RATHNAYAKE', '0765817918', 'Female', '1989-10-24', 'kanthirathnayake@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-12 16:54:17', '2025-07-12 16:54:17', 4);
+INSERT INTO `master_user` (`idmaster_user`, `first_name`, `last_name`, `contact_number`, `email`, `password`, `status`, `created_at`, `updated_at`, `user_role_iduser_role`) VALUES
+(1, 'ADMIN', 'ACCOUNT', '0702691198', 'admin@cineverse.lk', '6vEq7td1at4WW3g24dFqLQ==', 1, '2022-02-09 07:35:03', '2025-11-09 07:05:01', 1),
+(84, 'ISURU', 'PRABHATH KULASOORIYA', '0766961896', 'prabhath.kulasooriya@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-03-27 08:53:51', '2025-11-09 06:54:43', 4),
+(85, 'ISHARA', 'SAHENSHI', '0772797918', 'sahenshi@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-03-27 09:02:07', '2025-07-11 07:41:30', 4),
+(86, 'DILNETH', 'KULASOORIYA', '0765817918', 'dilneth@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-03-27 09:02:48', '2025-03-27 09:02:48', 4),
+(88, 'PRABHATHA', 'KULASOORIYAA', '0766961999', 'prabhath@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-03-29 06:06:53', '2025-07-11 07:53:55', 4),
+(90, 'PASINDU', 'BHANUKA', '0766666778', 'pasindubhanuka@cineverse.lk', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-05-04 03:52:15', '2025-11-09 07:05:28', 2),
+(92, 'ISURU', 'KULASOORIYA', '0766961896', 'isuruprabhathkulasooriya@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-06-22 15:52:29', '2025-06-22 16:00:22', 4),
+(93, 'TESHANI', 'RAVEENA', '0761234568', 'teshani@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-03 15:29:27', '2025-11-09 07:09:08', 3),
+(94, 'VIDULA', 'AKASH', '0771234567', 'vidulaakash@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-05 05:38:39', '2025-07-05 05:38:39', 4),
+(95, 'SANDALI', 'AKARSHA', '0771234567', 'sandaliakarsha@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-05 05:39:59', '2025-07-05 05:39:59', 4),
+(97, 'UMESHA', 'KULASOORIYA', '0766666666', 'umeshakulasooriya@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-05 06:19:31', '2025-07-05 06:19:31', 4),
+(98, 'THATHSARA', 'BANDARA', '0774561239', 'thathsara@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-06 13:14:59', '2025-07-06 13:14:59', 4),
+(99, 'DILNETH', 'KULASOORIYA', '0760404849', 'dilneth.kulasooriya11@gmail.com', 'I4tNvtlHlkXXO75ilVx6kg==', 1, '2025-07-12 13:33:57', '2025-07-12 13:52:26', 4),
+(101, 'GAYASHAN', 'NIMESHA', '0772772772', 'gayashan.admin@cineverse.lk', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-12 16:01:14', '2025-07-12 16:01:14', 1),
+(102, 'KANTHI', 'RATHNAYAKE', '0765817918', 'kanthirathnayake@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-12 16:54:17', '2025-07-12 16:54:17', 4),
+(107, 'GITHMIN', 'JAYAWARDHANA', '0761212121', 'githmin@gmail.com', '6vEq7td1at4WW3g24dFqLQ==', 1, '2025-07-13 06:59:15', '2025-07-13 07:01:27', 4);
 
 -- --------------------------------------------------------
 
@@ -690,9 +683,9 @@ INSERT INTO `movies` (`movie_id`, `name`, `category`, `duration`, `language`, `i
 (10, 'MUFASA: THE LION KING', 'DRAMA', 135, 'ENGLISH', '1751568959.jpg', '6.6', '2024-12-20', 'https://www.imdb.com/title/tt13186482/?ref_=nv_sr_srsg_0_tt_5_nm_3_in_0_q_mufasa', 0, 0, '2025-03-28 17:11:25', '2025-07-12 14:01:12'),
 (11, 'VENOM: THE LAST DANCE', 'ACTION', 135, 'ENGLISH', '1743581028.jpg', '6.0', '2024-10-25', 'https://www.imdb.com/title/tt16366836/?ref_=nv_sr_srsg_0_tt_6_nm_2_in_0_q_veno', 1, 1, '2025-04-02 08:03:48', '2025-07-03 18:42:52'),
 (12, 'LUCKY BHASKAR', 'DRAMA', 140, 'TAMIL', '1743581076.png', '7.2', '2024-10-21', 'https://www.imdb.com/title/tt27540542/', 1, 1, '2025-04-02 08:04:36', '2025-07-03 18:42:54'),
-(14, 'MOANA 2', 'FANTACY | ANIMATION', 105, 'ENGLISH', '1743581272.png', '6.6', '2024-11-27', 'https://www.imdb.com/title/tt13622970/?ref_=nv_sr_srsg_0_tt_6_nm_2_in_0_q_moana', 1, 1, '2025-04-02 08:07:52', '2025-05-17 12:46:56'),
+(14, 'MOANA 2', 'FANTACY | ANIMATION', 105, 'ENGLISH', '1743581272.png', '6.6', '2024-11-27', 'https://www.imdb.com/title/tt13622970/?ref_=nv_sr_srsg_0_tt_6_nm_2_in_0_q_moana', 1, 1, '2025-04-02 08:07:52', '2025-07-13 07:08:56'),
 (17, 'FURIOSA:MAD MAX SAGA', 'ACTION', 140, 'ENGLISH', '1751568978.jpg', '6.2', '2024-05-23', 'https://www.imdb.com/title/tt12037194/?ref_=fn_all_ttl_2', 0, 0, '2025-05-09 02:35:24', '2025-07-04 04:36:14'),
-(18, 'JEWEL THIEF: THE HEIST BEGINS', 'ACTION | THRILLER | ADVENTURE', 116, 'HINDI', '1751568988.jpg', '4.1', '2025-04-25', 'https://www.imdb.com/title/tt27843798/?ref_=mv_close', 1, 1, '2025-05-12 06:29:29', '2025-07-03 18:56:28'),
+(18, 'JEWEL THIEF: THE HEIST BEGINS', 'ACTION | THRILLER | ADVENTURE', 116, 'HINDI', '1751568988.jpg', '4.1', '2025-04-25', 'https://www.imdb.com/title/tt27843798/?ref_=mv_close', 1, 1, '2025-05-12 06:29:29', '2025-07-13 07:08:31'),
 (23, 'THUNDERBOLTS', 'ACTION | ADVENTURE | PG-13', 120, 'ENGLISH', '1747285791.jpg', '7.6', '2025-05-02', 'https://www.imdb.com/title/tt20969586/?ref_=chtmvm_t_1', 1, 1, '2025-05-15 05:09:51', '2025-05-17 12:46:58'),
 (24, 'WALAMPURI', 'CRIME', 150, 'SINHALA', '1751603217.png', '8.7', '2025-04-25', 'https://www.youtube.com/watch?v=bOz69Hgk8RY', 1, 1, '2025-07-04 04:26:57', '2025-07-12 13:50:43');
 
@@ -803,7 +796,12 @@ INSERT INTO `payments` (`payment_id`, `bookings_booking_id`, `email`, `amount`, 
 (85, 760332444, 'dilnethkulasooriya@gmail.com', '10400', 'CASH', '2025-07-12 05:58:42', '2025-07-12 05:58:42'),
 (86, 71001600, 'dilnethkulasooriya11@gmail.com', '36000', 'CARD', '2025-07-12 13:29:51', '2025-07-12 13:29:51'),
 (87, 760306717, 'dilnethkulasooriya11@gmail.com', '3900', 'CARD', '2025-07-12 13:39:42', '2025-07-12 13:39:42'),
-(88, 760498933, 'prabhath.kulasooriya@gmail.com', '4000', 'CARD', '2025-07-12 15:08:15', '2025-07-12 15:08:15');
+(88, 760498933, 'prabhath.kulasooriya@gmail.com', '4000', 'CARD', '2025-07-12 15:08:15', '2025-07-12 15:08:15'),
+(89, 770131724, 'prabhath.kulasooriya@gmail.com', '4000', 'CARD', '2025-07-13 03:06:02', '2025-07-13 03:06:02'),
+(90, 710243612, 'isuruprabhath@gmail.com', '3500', 'CARD', '2025-07-13 06:55:25', '2025-07-13 06:55:25'),
+(91, 900227075, 'githmin@gmail.com', '2000', 'PAYPAL', '2025-07-13 07:00:09', '2025-07-13 07:00:09'),
+(92, 690242341, 'test@gmail.com', '1000', 'PAYPAL', '2025-08-07 05:22:03', '2025-08-07 05:22:03'),
+(93, 690748838, 'isuru@gmail.com', '4000', 'CARD', '2025-09-20 14:59:36', '2025-09-20 14:59:36');
 
 -- --------------------------------------------------------
 
@@ -945,8 +943,8 @@ CREATE TABLE `seat_type` (
 --
 
 INSERT INTO `seat_type` (`idseat_type`, `type`, `price`, `created_at`, `updated_at`) VALUES
-(1, 'STANDARD', '1000', NULL, '2025-07-12 13:45:57'),
-(2, 'PRIME', '1750', NULL, '2025-07-12 13:45:40');
+(1, 'STANDARD', '500', NULL, '2025-07-13 03:07:37'),
+(2, 'PRIME', '1000', NULL, '2025-07-13 03:07:45');
 
 -- --------------------------------------------------------
 
@@ -1051,19 +1049,16 @@ INSERT INTO `shows` (`show_id`, `movies_movie_id`, `date`, `time`, `created_at`,
 (86, 18, '2025-07-08', '22:00:00', '2025-07-05 08:32:10', '2025-07-05 08:32:10'),
 (87, 23, '2025-07-09', '14:00:00', '2025-07-05 08:32:20', '2025-07-05 08:32:20'),
 (88, 14, '2025-07-09', '10:00:00', '2025-07-05 08:32:30', '2025-07-05 08:32:30'),
-(89, 14, '2025-07-13', '14:00:00', '2025-07-12 17:04:35', '2025-07-12 17:04:35'),
 (90, 14, '2025-07-16', '10:00:00', '2025-07-12 17:04:56', '2025-07-12 17:04:56'),
 (91, 14, '2025-07-16', '14:00:00', '2025-07-12 17:05:05', '2025-07-12 17:05:05'),
-(92, 11, '2025-07-13', '18:00:00', '2025-07-12 17:05:18', '2025-07-12 17:05:18'),
-(93, 24, '2025-07-13', '22:00:00', '2025-07-12 17:05:33', '2025-07-12 17:05:33'),
 (94, 18, '2025-07-16', '18:00:00', '2025-07-12 17:05:42', '2025-07-12 17:05:42'),
-(95, 18, '2025-07-16', '22:00:00', '2025-07-12 17:05:52', '2025-07-12 17:05:52'),
-(96, 14, '2025-07-14', '10:00:00', '2025-07-12 17:06:04', '2025-07-12 17:06:04'),
 (97, 12, '2025-07-14', '14:00:00', '2025-07-12 17:06:13', '2025-07-12 17:06:13'),
 (98, 23, '2025-07-14', '18:00:00', '2025-07-12 17:06:27', '2025-07-12 17:06:27'),
 (99, 24, '2025-07-14', '22:00:00', '2025-07-12 17:06:35', '2025-07-12 17:06:35'),
 (100, 12, '2025-07-15', '10:00:00', '2025-07-12 17:06:47', '2025-07-12 17:06:47'),
-(101, 23, '2025-07-15', '14:00:00', '2025-07-12 17:10:04', '2025-07-12 17:10:04');
+(101, 23, '2025-07-15', '14:00:00', '2025-07-12 17:10:04', '2025-07-12 17:10:04'),
+(102, 11, '2025-09-22', '10:00:00', '2025-09-20 14:55:18', '2025-09-20 14:55:18'),
+(103, 12, '2025-09-22', '14:00:00', '2025-09-20 14:55:29', '2025-09-20 14:55:29');
 
 -- --------------------------------------------------------
 
@@ -1134,13 +1129,6 @@ ALTER TABLE `bookings`
   ADD KEY `fk_bookings_master_user1_idx` (`master_user_idmaster_user`);
 
 --
--- Indexes for table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`idclient`),
-  ADD KEY `fk_client_master_user1_idx` (`master_user_idmaster_user`);
-
---
 -- Indexes for table `imageslider`
 --
 ALTER TABLE `imageslider`
@@ -1208,13 +1196,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `booked_seats`
 --
 ALTER TABLE `booked_seats`
-  MODIFY `booked_seats_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=631;
-
---
--- AUTO_INCREMENT for table `client`
---
-ALTER TABLE `client`
-  MODIFY `idclient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `booked_seats_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=689;
 
 --
 -- AUTO_INCREMENT for table `imageslider`
@@ -1226,7 +1208,7 @@ ALTER TABLE `imageslider`
 -- AUTO_INCREMENT for table `master_user`
 --
 ALTER TABLE `master_user`
-  MODIFY `idmaster_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `idmaster_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `movies`
@@ -1238,7 +1220,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `seats`
@@ -1250,7 +1232,7 @@ ALTER TABLE `seats`
 -- AUTO_INCREMENT for table `shows`
 --
 ALTER TABLE `shows`
-  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -1276,12 +1258,6 @@ ALTER TABLE `bookings`
   ADD CONSTRAINT `fk_bookings_master_user1` FOREIGN KEY (`master_user_idmaster_user`) REFERENCES `master_user` (`idmaster_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_bookings_movies1` FOREIGN KEY (`movies_movie_id`) REFERENCES `movies` (`movie_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_bookings_shows1` FOREIGN KEY (`shows_show_id`) REFERENCES `shows` (`show_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `client`
---
-ALTER TABLE `client`
-  ADD CONSTRAINT `fk_client_master_user1` FOREIGN KEY (`master_user_idmaster_user`) REFERENCES `master_user` (`idmaster_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `imageslider`
