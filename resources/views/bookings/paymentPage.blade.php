@@ -16,14 +16,11 @@
         <button class="toggle-method-btn active" id="cashTab">Cash</button>
         @elseif(Auth::check() &&( Auth::user()->user_role_iduser_role == 1))
         <button class="toggle-method-btn active" id="cashTab">Cash</button>
-        <button class="toggle-method-btn active" id="cardTab">Card Payments</button>
-        <button class="toggle-method-btn" id="paypalTab">PayPal</button>
+        <button class="toggle-method-btn" id="cardTab">Card Payments</button>
         @else
         <button class="toggle-method-btn active" id="cardTab">Card Payments</button>
-        <button class="toggle-method-btn" id="paypalTab">PayPal</button>
         @endif
         
-       
     </div>
 
     @if(session('error'))
@@ -35,9 +32,9 @@
                 </div>
         @endif
 
-  @if(Auth::check() &&( Auth::user()->user_role_iduser_role == 1 || Auth::user()->user_role_iduser_role == 3))
+  @if(Auth::check() && Auth::user()->user_role_iduser_role == 3)
     
-  {{-- Cash Payment --}}
+  {{-- Cash Payment Only for Role 3 --}}
         <div class="payment-container" id="cashSection" style="display: block;">
             <div class="payment-header">
                 <h5>Counter Checkout</h5>
@@ -86,10 +83,61 @@
                     </form>
                 </div>
             </div>
-            
-  @else
-  {{-- Card Payment --}}
-    <div class="payment-container" id="cardSection">
+
+  @elseif(Auth::check() && Auth::user()->user_role_iduser_role == 1)
+    
+  {{-- Cash Payment for Role 1 --}}
+        <div class="payment-container" id="cashSection" style="display: block;">
+            <div class="payment-header">
+                <h5>Counter Checkout</h5>
+            </div>
+
+                <div class="payment-content">
+                    <form id="cashPayForm" method="POST" action="{{ route('manualPayment') }}" class="payment-form">
+                        @csrf
+
+                        <input type="hidden" name="bookingId" value="{{ $bookingData['booking_id'] }}">
+                        <input type="hidden" name="paymentMethod" value="CASH">
+
+                        <div class="form-element">
+                            <span class="child">
+                            <label>Name <span class="required">*</span></label>
+                            <input type="text" id="cashName" name="name" placeholder="enter your name">
+                            <small class="text-danger" id="cashNameError"></small> 
+                            </span>
+                        </div>
+                        <div class="form-element">
+                            <span class="child">
+                            <label>Email Address <span class="required">*</span></label>
+                            <input type="email" id="cashEmail" name="email" placeholder="your@email.com" oninput="this.value = this.value.toLowerCase();">
+                            <small class="text-danger" id="cashEmailError"></small> 
+                            </span>
+
+                        </div>
+
+                        <div class="total-amount">
+                            <div class="label">Total Amount</div>
+                            <div class="amount">LKR.{{ $bookingData['amount'] }}</div>
+                        </div>
+
+                        <div class="btn-container">
+                            <button type="button" class="pay-button btn-pay" id="cashPayButton">
+                                <i class="fa fa-money" aria-hidden="true"></i>
+                                Pay
+                            </button>
+
+                            <a href="{{ route('cancel') }}">
+                                <button type="button" class="pay-button btn-cancel">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i> Cancel Booking
+                                </button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+  {{-- Card Payment for Role 1 --}}
+    <div class="payment-container" id="cardSection" style="display: none;">
           
         <div class="payment-header">
             <h5>Card Payment</h5>
@@ -177,80 +225,97 @@
         </div>
     </div>
 
-
-    {{-- PayPal Payment --}}
-    <div class="payment-container" id="paypalSection" style="display: none;">
+  @else
+  {{-- Card Payment for Other Roles --}}
+    <div class="payment-container" id="cardSection">
+          
         <div class="payment-header">
-            <h5>PayPal Checkout</h5>
+            <h5>Card Payment</h5>
+            <span class="card-elements">
+                <img src="assets/images/logo/visa.png" height="50" alt="logo">
+                <img src="assets/images/logo/mastercard.png" height="50" alt="logo">
+                <img src="assets/images/logo/amex.png" height="50" alt="logo">
+            </span>
         </div>
 
         <div class="payment-content">
-            <form id="paypalForm" method="POST" action="{{ route('manualPayment') }}" class="payment-form">
-                @csrf
-
-                <input type="hidden" name="bookingId" value="{{ $bookingData['booking_id'] }}">
-                <input type="hidden" name="paymentMethod" value="PAYPAL">
-
+            
+            <form action="{{ route('manualPayment') }}" method="POST" class="payment-form" id="paymentForm" >
+                {{csrf_field()}}
+                <input type="hidden" name="paymentMethod" value="CARD">
+                <div class="form-element">
+                    <span class="child">
+                    <label>Card Number <span class="required">*</span></label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                    <input type="hidden" id="bookingId" name="bookingId" value="{{$bookingData['booking_id']}}">
+                    <small class="text-danger" id="cardNumberError"></small>
+                    </span>
+                </div>
+                
+                <div class="exp-cvv-row">
+                    <div class="form-element form-element-expire ">
+                        <span class="child">
+                        <label>Expire Date <span class="required">*</span></label>
+                        <input type="text" id="expireDate" name="expireDate" placeholder="MM/YY" maxlength="5">
+                        <small class="text-danger" id="expireDateError"></small>
+                    </span>
+                    </div>
+                    
+                    <div class="form-element form-element-cvv">
+                        <span class="child child-cvv">
+                        <label>CVV <span class="required">*</span></label>
+                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+                        <small class="text-danger" id="cvvError"></small>
+                        </span>
+                    </div>
+                </div>
+            
                 <div class="form-element">
                     <span class="child">
                     <label>Name <span class="required">*</span></label>
-                    <input type="text" id="paypalName" name="name" placeholder="enter your name"
+                    <input type="text" id="name" name="name" placeholder="enter your name"
                     @if(Auth::check())
                         value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}"
                     @endif >
-                    <small class="text-danger" id="paypalNameError"></small> 
+                    <small class="text-danger" id="nameError"></small>
                     </span>
                 </div>
                 <div class="form-element">
                     <span class="child">
                     <label>Email Address <span class="required">*</span></label>
-                    <input type="email" id="paypalEmail" name="email" placeholder="your@email.com"
+                    <input type="email" id="email" name="email" placeholder="your@email.com"
                     @if(Auth::check())
                         value="{{ Auth::user()->email }}"
                     @endif
                     oninput="this.value = this.value.toLowerCase();">
-                    <small class="text-danger" id="paypalEmailError"></small> 
+                    <small class="text-danger" id="emailError"></small>
                     </span>
 
                 </div>
-
+                
                 <div class="total-amount">
                     <div class="label">Total Amount</div>
-                    <div class="amount">LKR.{{ $bookingData['amount'] }}</div>
+                    <div class="amount" id="totalAmount">LKR.{{$bookingData['amount']}} </div>
                 </div>
 
                 <div class="btn-container">
-                    <button type="button" class="pay-button btn-pay" id="openPaypalModal">
-                        <i class="fa fa-paypal" aria-hidden="true"></i>
+                
+                    <button type="submit" class="pay-button btn-pay" id="payButton">
+                        <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
                         Pay Now
                     </button>
 
-                    <a href="{{ route('cancel') }}">
-                        <button type="button" class="pay-button btn-cancel">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i> Cancel Booking
-                        </button>
+                    <a href="{{route('cancel')}}">
+                    <button type="button" class="pay-button btn-cancel" id="cancelButton">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i> Cancel Booking</button>
                     </a>
                 </div>
             </form>
+            
         </div>
     </div>
     
  @endif   
-    <div class="overlay" id="paypalOverlay"></div>
-
-    
-    <div class="paypal-modal bg-light " id="paypalModal" >
-        <h3 >PayPal Checkout</h3>
-        <p><strong>Total:</strong> LKR.{{ $bookingData['amount'] }}</p>
-        <p>Pay with your PayPal Wallet</p>
-
-        <button type="button" class="pay-button btn-pay" id="approvePaypal" style="width: 100%;">
-            <i class="fa fa-paypal"></i> Approve Payment
-        </button>
-        <button type="button" class="pay-button btn-cancel" id="cancelPaypal" style="width: 100%; margin-top: 10px;">
-            <i class="fa fa-times"></i> Cancel
-        </button>
-    </div>
 
 </div>
 
@@ -284,7 +349,7 @@ document.getElementById('expireDate')?.addEventListener('input', function(e) {
         value = month + value.substring(2);
     }
     
-    // Validate last two digits (year: current year or future, simplified to 24-31)
+    // Validate last two digits (year: current year or future)
     if (value.length >= 3) {
         let year = value.substring(2, 4);
         let currentYear = new Date().getFullYear();
@@ -384,112 +449,39 @@ document.getElementById('cvv')?.addEventListener('input', function(e) {
 
 
     const cardTab = document.getElementById('cardTab');
-    const paypalTab = document.getElementById('paypalTab');
     const cashTab = document.getElementById('cashTab');
     const cardSection = document.getElementById('cardSection');
-    const paypalSection = document.getElementById('paypalSection');
     const cashSection = document.getElementById('cashSection');
 
     cardTab?.addEventListener('click', () => {
         cardTab.classList.add('active');
-        paypalTab?.classList.remove('active');
         if(cashTab){
             cashTab.classList.remove('active');
         }
         cardSection.style.display = 'block';
-        paypalSection.style.display = 'none';
         if(cashSection){
             cashSection.style.display = 'none';
         }
-        // Clear PayPal and Cash specific errors when switching back to card
-        document.getElementById('paypalNameError').innerText = "";
-        document.getElementById('paypalEmailError').innerText = "";
+        // Clear specific errors
         document.getElementById('cashEmailError').innerText = "";
         document.getElementById('cashNameError').innerText = "";
 
-    });
-
-    paypalTab?.addEventListener('click', () => {
-        paypalTab.classList.add('active');
-        cardTab?.classList.remove('active');
-        if(cashTab){
-            cashTab.classList.remove('active');
-        }
-        
-        paypalSection.style.display = 'block';
-        cardSection.style.display = 'none';
-        if(cashSection){
-            cashSection.style.display = 'none';
-        }
-        // Clear Card and Cash specific errors when switching to PayPal
-        document.getElementById('cardNumberError').innerText = "";
-        document.getElementById('expireDateError').innerText = "";
-        document.getElementById('cvvError').innerText = "";
-        document.getElementById('nameError').innerText = ""; 
-        document.getElementById('emailError').innerText = "";
-        document.getElementById('cashEmailError').innerText = "";
-        document.getElementById('cashNameError').innerText = "";
     });
 
     if(cashTab){
         cashTab.addEventListener('click', () => {
             cashTab.classList.add('active');
             cardTab?.classList.remove('active');
-            paypalTab?.classList.remove('active');
             cashSection.style.display = 'block';
             cardSection.style.display = 'none';
-            paypalSection.style.display = 'none';
-            // Clear Card and PayPal specific errors when switching to Cash
+            // Clear Card specific errors when switching to Cash
             document.getElementById('cardNumberError').innerText = "";
             document.getElementById('expireDateError').innerText = "";
             document.getElementById('cvvError').innerText = "";
             document.getElementById('nameError').innerText = ""; 
             document.getElementById('emailError').innerText = "";
-            document.getElementById('paypalNameError').innerText = "";
-            document.getElementById('paypalEmailError').innerText = "";
         });
     }
-
-    const openPaypalModalBtn = document.getElementById('openPaypalModal');
-    const paypalOverlay = document.getElementById('paypalOverlay');
-    const paypalModal = document.getElementById('paypalModal');
-    const approvePaypalBtn = document.getElementById('approvePaypal');
-    const cancelPaypalBtn = document.getElementById('cancelPaypal');
-    const paypalForm = document.getElementById('paypalForm'); 
-
-    openPaypalModalBtn?.addEventListener('click', () => {
-        const name = document.getElementById('paypalName').value.trim();
-        const email = document.getElementById('paypalEmail').value.trim();
-        let hasPaypalError = false;
-
-        // Reset PayPal errors
-        document.getElementById('paypalNameError').innerText = "";
-        document.getElementById('paypalEmailError').innerText = "";
-        
-        if (!name) {
-            document.getElementById('paypalNameError').innerText ='Please enter your name for PayPal checkout.';
-            hasPaypalError = true;
-        }
-
-        if (!email.includes('@') || email.split('@')[1].length < 3 || email.split('.').length < 2) { 
-            document.getElementById('paypalEmailError').innerText = "Enter a valid email address.";
-            hasPaypalError = true;
-        }
-
-        if (!hasPaypalError) {
-            paypalOverlay.style.display = 'block';
-            paypalModal.style.display = 'block';
-        }
-    });
-
-    cancelPaypalBtn?.addEventListener('click', () => {
-        paypalOverlay.style.display = 'none';
-        paypalModal.style.display = 'none';
-    });
-
-    approvePaypalBtn?.addEventListener('click', () => {
-        paypalForm.submit();
-    });
 
     // Cash payment validation and submission
     const cashPayButton = document.getElementById('cashPayButton');
