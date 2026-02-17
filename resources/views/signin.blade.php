@@ -12,10 +12,10 @@
 
 
 
-<div class="wrapper-page signin-page" >
+<div class="wrapper-page signin-page " >
 
                  @if(session('success'))
-                    <div class="alert alert-success text-center ticket-success-container alert-dismissible" id="ticket-success-container">
+                    <div class="alert alert-success text-center ticket-success-container alert-dismissible mt-3" id="ticket-success-container">
                         <i class="fa fa-check-circle" aria-hidden="true"></i> {{ session('success') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -24,7 +24,7 @@
                 @endif           
 
                 @if(\Session::has('error'))
-                    <div class="alert alert-danger alert-dismissible ">
+                    <div class="alert alert-danger alert-dismissible mt-3  ">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -43,7 +43,9 @@
 
     <div class="card" style="background-color: rgba(245, 245, 245, 0.8);">
         <div class="card-body">
-            
+            <div class="closebutton-container">
+            <a href="{{route('home')}}"><i class='fa fa-times fa-2x close-button' aria-hidden="true"></i></a>
+            </div>
 
             <h3 class="text-center m-0">
                 <a  href="{{route('home')}}" ><img src="assets/images/logo/logo_3.png" height="90" alt="logo"></a>
@@ -84,9 +86,11 @@
                                 <label class="custom-control-label" for="customControlInline">Remember me</label>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group form-group-login-button w-full row m-t-20">
 
-                        <div class="col-sm-6 text-right">
-                            <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Sign In</button>
+                        <div class="col-sm-6 text-center container-fluid">
+                            <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
                         </div>
                     </div>
 

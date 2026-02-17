@@ -70,7 +70,7 @@
 
                     <!-- Submit Button -->
                     <div class="form-group row m-t-20">
-                        <div class="col-lg text-right">
+                        <div class="col-lg text-center">
                             <button class="btn btn-primary waves-effect waves-light" type="submit">Register</button>
                         </div>
                     </div>
