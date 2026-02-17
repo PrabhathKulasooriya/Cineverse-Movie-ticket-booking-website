@@ -44,7 +44,7 @@
     <div class="card" style="background-color: rgba(245, 245, 245, 0.8);">
         <div class="card-body">
             <div class="closebutton-container">
-            <a href="{{route('home')}}"><i class='fa fa-times fa-2x close-button' aria-hidden="true"></i></a>
+            <a href="{{ session('url.intended') }}"><i class='fa fa-times fa-2x close-button' aria-hidden="true"></i></a>
             </div>
 
             <h3 class="text-center m-0">

@@ -58,6 +58,13 @@ class SecurityController extends Controller
 
     public function signup(){
 
+        if(session()->has('url.intended') &&( url()->previous() != url('/signin') && url()->previous() != url('/clientSignup') )) {
+            session(['url.intended' => url()->previous()]);
+        }
+        if (!session()->has('url.intended')) {
+        session(['url.intended' => url()->previous()]);
+        }
+
         return view('clientSignup',['title'=>'Sign Up']);
     }
 

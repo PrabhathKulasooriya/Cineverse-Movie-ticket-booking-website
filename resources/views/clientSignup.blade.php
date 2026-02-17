@@ -13,7 +13,7 @@
     <div class="card signup-card" style="background-color: rgba(245, 245, 245, 0.8);">
         <div class="card-body">
             <div class="closebutton-container">
-            <a href="{{route('home')}}"><i class='fa fa-times fa-2x close-button' aria-hidden="true"></i></a>
+            <a href="{{session('url.intended')}}"><i class='fa fa-times fa-2x close-button' aria-hidden="true"></i></a>
             </div>
             <div class="p-3">
                 <h4 class="header-text m-b-5 text-center">Sign Up</h4>
