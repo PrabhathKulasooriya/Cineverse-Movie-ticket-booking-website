@@ -13,17 +13,9 @@ Route::get('/', 'ClientInterfaceController@index')->name('home');
 
 
 //Login
-Route::get('/signin', function () {
+Route::get('/signin', 'SecurityController@signin')->middleware('guest')->name('signin');
 
-        if(session()->has('url.intended') &&( url()->previous() != url('/signin') && url()->previous() != url('/clientSignup') )) {
-            session(['url.intended' => url()->previous()]);
-        }
-        if (!session()->has('url.intended')) {
-        session(['url.intended' => url()->previous()]);
-        }
         
-        return view('signin');
-        })->middleware('guest')->name('signin');
 
 
 
