@@ -15,11 +15,6 @@
             </div>
         </div>
 
-        <!-- Background Video Start-->
-            {{-- <video autoplay muted loop id="myVideo">
-            <source src="{{ URL::asset('assets\images\video-bg.mp4') }}" type="video/mp4">
-            </video>--}}
-        <!-- Background Video End-->
 
         <div id="fullpage" class="fullpage-default">
 

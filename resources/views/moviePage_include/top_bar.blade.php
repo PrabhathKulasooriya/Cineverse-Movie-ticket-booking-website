@@ -47,7 +47,7 @@
                                 @endif
                             @else
                                  <!-- If the user is not logged in -->
-                                <li><a href="{{ URL::asset('/clientSignup')}}">Sign Up</a></li>
+                                {{-- <li><a href="{{ URL::asset('/clientSignup')}}">Sign Up</a></li> --}}
                                 <li><a href="{{ URL::asset('/signin')}}">Log In</a></li>
                             @endif
 

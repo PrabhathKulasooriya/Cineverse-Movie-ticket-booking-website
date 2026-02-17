@@ -49,7 +49,7 @@
                                 @endif
                             @else
                                  <!-- If the user is not logged in -->
-                                 <li data-menuanchor="slide05"><a href="clientSignup">Sign Up</a></li>
+                                 {{-- <li data-menuanchor="slide05"><a href="clientSignup">Sign Up</a></li> --}}
                                  <li data-menuanchor="slide05"><a href="signin">Log In</a></li>
                             @endif
 
